@@ -1,0 +1,376 @@
+/* Import Futuristic Font */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron&display=swap');
+
+/* General Styling */
+body, html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  font-family: 'Orbitron', sans-serif; /* Apply font-family to the entire page */
+}
+
+.app {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  position: relative;
+  color: #fff;
+  overflow: hidden;
+  flex-direction: column; /* Flex direction for stacking content */
+  opacity: 0;
+  transition: opacity 0.8s ease-in-out; /* Transition for fading in app content */
+}
+
+.app.transition-visible {
+  opacity: 1;
+}
+/* Content (Circle, Visualizer, and Button) */
+.app .content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 1; /* Ensure content is above the starfield */
+}
+
+/* Visualizer Canvas (Rounded Box) - Modified */
+.visualizer {
+   display: none;
+}
+
+/* Desktop Blur */
+.visualizer canvas {
+  filter: blur(0.8px);
+}
+
+/* Mobile Blur */
+@media (max-width: 768px) {
+  .visualizer canvas {
+      filter: blur(1.2px);
+  }
+}
+
+/* Button Styling (Rounded Rectangle) */
+.mic-button {
+  width: 200px;
+  height: 60px;
+  border-radius: 30px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  background: transparent;
+  font-size: 20px;
+  font-weight: bold;
+  color: rgba(255, 255, 255, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  outline: none;
+  z-index: 1;
+  margin-top: 20px;
+  box-shadow: 0 4px 10px rgba(52, 152, 219, 0), 0 8px 30px rgba(52, 152, 219, 0);
+}
+
+.mic-button:hover {
+  background: black;
+  color: white;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 0 4px 10px rgba(52, 152, 219, 0.2), 0 8px 30px rgba(52, 152, 219, 0.1);
+  transform: translateY(-2px);
+}
+
+.mic-button:active {
+    background: rgb(20, 20, 20);
+    color: white;
+  box-shadow: 0 3px 10px rgba(52, 152, 219, 0.2), 0 5px 20px rgba(52, 152, 219, 0.2);
+  transform: translateY(1px);
+}
+
+.mic-button span {
+  font-size: 16px;
+}
+
+/* Profile Image Circle */
+.circle-container {
+  position: relative;
+  width: 340px;
+  height: 340px;
+}
+
+.visualizer-canvas {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 380px;
+  height: 380px;
+  z-index: 1;
+}
+
+.circle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 240px;
+  height: 240px;
+  border-radius: 50%;
+  overflow: hidden;
+  z-index: 2;
+    border: 5px solid rgba(255, 255, 255, 0.7);
+}
+
+.center-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2);
+  border-radius: 80%;
+}
+
+
+/* Shooting Star Animation */
+.shooting-star {
+    position: absolute;
+    height: 2px;
+    background: linear-gradient(to right, rgba(255, 255, 255, 0.2), white);
+    border-radius: 1px;
+    pointer-events: none;
+}
+
+/* Social Media Icons */
+.social-icons {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 20px;
+  z-index: 0;
+}
+
+.social-icons a {
+    color: white;
+    font-size: 50px;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.social-icons a:hover {
+    color: #ddd;
+}
+
+/* Loader Container */
+.loader-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  background-color: black;
+  z-index: 1000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  flex-direction: column; /* Make it a flex container */
+    transition: opacity 0.5s ease-in-out;
+}
+
+/* Loading Quote */
+.loading-quote {
+    margin-top: 20px; /* Space between loader and quote */
+    text-align: center;
+    font-size: 1.2em;
+    color: white;
+    font-weight: normal;
+    font-family: 'Orbitron', sans-serif; /* Ensure the font is applied */
+}
+/* From Uiverse.io by vinodjangid07 */
+.Btn {
+  width: 45px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background-color: transparent;
+  position: relative;
+  border-radius: 7px;
+  cursor: pointer;
+  transition: all .3s;
+}
+
+.svgContainer {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  backdrop-filter: blur(4px);
+  letter-spacing: 0.8px;
+  border-radius: 10px;
+  transition: all .3s;
+  border: 1px solid rgba(156, 156, 156, 0.466);
+}
+
+.BG {
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 100%;
+  background: #f09433;
+  background: -moz-linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+  background: -webkit-linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
+  background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f09433', endColorstr='#bc1888',GradientType=1 );
+  z-index: -1;
+  border-radius: 9px;
+  pointer-events: none;
+  transition: all .3s;
+}
+
+.Btn:hover .BG {
+  transform: rotate(35deg);
+  transform-origin: bottom;
+}
+
+.Btn:hover .svgContainer {
+  background-color: rgba(156, 156, 156, 0.466);
+}
+
+.mic-button {
+    /* ... existing styles ... */
+}
+
+.mic-button.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.mic-button.disabled:hover {
+    transform: none;
+    background: initial;
+}
+
+/* Add these styles to your existing App.css */
+
+.wave-container {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  z-index: 0;
+  border-top-left-radius: 100px;  /* Add large rounded corners */
+  border-top-right-radius: 100px;
+  background: rgba(255, 255, 255, 0.1); /* Optional: adds slight background */
+  backdrop-filter: blur(5px);     /* Optional: adds slight blur effect */
+}
+
+.wave {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 150px;
+  border-top-left-radius: 100px;  /* Match container's radius */
+  border-top-right-radius: 100px;
+}
+
+.wave path {
+  transition: all 0.3s ease;
+}
+
+.config-inputs-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%; /* Adjust width as needed */
+    max-width: 500px; /* Maximum width of the card */
+    z-index: 2; /* Ensure it's above starfield */
+}
+
+
+/* Config Inputs Card */
+.config-inputs {
+    background-color: rgba(20, 20, 20, 0.7); /* Dark background with transparency */
+    backdrop-filter: blur(10px); /* Apply blur effect */
+    border-radius: 15px; /* Rounded edges */
+    padding: 40px;
+    border: 1px solid rgba(255, 255, 255, 0.2); /* Subtle border */
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3); /* Soft shadow for depth */
+    text-align: center;
+}
+
+.config-inputs h2 {
+    color: white;
+    margin-bottom: 25px;
+    font-size: 1.8em;
+}
+
+.config-inputs form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Spacing between input fields and button */
+    align-items: stretch; /* Stretch items to fill container width */
+}
+
+.config-inputs input[type="text"] {
+    padding: 15px;
+    border: none;
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.1); /* Slightly lighter input background */
+    color: white;
+    font-size: 1em;
+    font-family: 'Orbitron', sans-serif;
+    outline: none; /* Remove default focus outline */
+    transition: background-color 0.2s ease;
+}
+
+.config-inputs input[type="text"]::placeholder {
+    color: rgba(255, 255, 255, 0.5); /* Placeholder text color */
+}
+
+.config-inputs input[type="text"]:focus {
+    background-color: rgba(255, 255, 255, 0.2); /* Slightly brighter on focus */
+}
+
+
+/* Awesome Submit Button */
+.config-submit-button {
+    padding: 15px 30px;
+    border: none;
+    border-radius: 30px; /* Pill-shaped button */
+    background: linear-gradient(45deg, #4CAF50, #8BC34A); /* Gradient background */
+    color: white;
+    font-size: 1.1em;
+    font-weight: bold;
+    font-family: 'Orbitron', sans-serif;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+    outline: none; /* Remove default focus outline */
+}
+
+.config-submit-button:hover {
+    transform: translateY(-3px); /* Lift effect on hover */
+    box-shadow: 0 7px 20px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
+}
+
+.config-submit-button:active {
+    transform: translateY(0); /* No lift when active/pressed */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Reset shadow when active */
+}
+
+
+.config-inputs .error-message {
+    color: #FF6B6B; /* Error text color (reddish) */
+    margin-top: 15px;
+    font-size: 0.9em;
+}
+
