@@ -1,6 +1,7 @@
 # **Vyoma AI Public License (VAPL) v1.0**  
 
-**Effective Date:** 07th March 2025 
+**Effective Date:** 07th March 2025
+
 **Licensor:** Vyoma AI Pvt Ltd  
 **Jurisdiction:** Tamil Nadu, India  
 
