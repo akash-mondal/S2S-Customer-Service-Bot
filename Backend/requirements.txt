@@ -18,3 +18,4 @@ hypercorn
 pysqlite3-binary
 langchain-groq 
 yfinance
+streamlit
